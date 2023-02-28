@@ -11,6 +11,8 @@ from tgbot.handlers.admin import register_admin
 from tgbot.handlers.user import register_user
 from tgbot.middlewares.environment import EnvironmentMiddleware
 
+from tgbot.functions.services import *
+
 logger = logging.getLogger(__name__)
 
 
@@ -25,6 +27,10 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_admin(dp)
     register_user(dp)
+
+
+def register_all_services(dp):
+    register_services(dp)
 
 
 async def main():
@@ -44,6 +50,7 @@ async def main():
     register_all_middlewares(dp, config)
     register_all_filters(dp)
     register_all_handlers(dp)
+    register_all_services(dp)
 
     # start
     try:
